@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>7 Website Speed Optimisation Tips | ClearTwo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink: #1a1209;
+      --paper: #f7f3ec;
+      --accent: #c8450a;
+      --accent-light: #f0ddd4;
+      --mid: #6b5f52;
+      --rule: #d9d0c2;
+      --col-width: 700px;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-weight: 300;
+      line-height: 1.8;
+      font-size: 18px;
+    }
+
+    /* ── MASTHEAD ── */
+    header {
+      border-bottom: 3px double var(--ink);
+      padding: 1.5rem 2rem 1rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--ink);
+      text-decoration: none;
+      letter-spacing: -.5px;
+    }
+    .logo span { color: var(--accent); }
+    nav a {
+      font-family: 'Source Serif 4', serif;
+      font-size: .85rem;
+      color: var(--mid);
+      text-decoration: none;
+      margin-left: 1.5rem;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    nav a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 900px;
+      margin: 4rem auto 0;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+    }
+    .category-pill {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: .75rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      padding: .3rem .8rem;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      line-height: 1.1;
+      font-weight: 900;
+      grid-column: 1 / -1;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .hero-meta {
+      font-size: .85rem;
+      color: var(--mid);
+      letter-spacing: .04em;
+      border-top: 1px solid var(--rule);
+      padding-top: .75rem;
+      grid-column: 1 / -1;
+    }
+    .hero-meta strong { color: var(--ink); }
+
+    /* ── RULE ── */
+    .divider {
+      max-width: 900px;
+      margin: 2.5rem auto;
+      padding: 0 2rem;
+    }
+    .divider hr {
+      border: none;
+      border-top: 1px solid var(--rule);
+    }
+
+    /* ── BODY LAYOUT ── */
+    .article-wrap {
+      max-width: 900px;
+      margin: 0 auto 5rem;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 240px;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    /* ── ARTICLE ── */
+    article p { margin-bottom: 1.4rem; color: #2d2418; }
+    article h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin: 2.8rem 0 .8rem;
+      color: var(--ink);
+      position: relative;
+      padding-left: 1rem;
+    }
+    article h2::before {
+      content: '';
+      position: absolute;
+      left: 0; top: .2em; bottom: .2em;
+      width: 3px;
+      background: var(--accent);
+    }
+    article .intro {
+      font-size: 1.15rem;
+      font-style: italic;
+      color: var(--mid);
+      border-left: 3px solid var(--rule);
+      padding-left: 1.2rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ── CALLOUT / INTERNAL LINK BLOCK ── */
+    .cta-block {
+      background: var(--accent-light);
+      border-left: 4px solid var(--accent);
+      padding: 1.2rem 1.4rem;
+      margin: 2.5rem 0;
+      border-radius: 0 4px 4px 0;
+    }
+    .cta-block p {
+      font-size: .95rem;
+      margin: 0 0 .6rem;
+      color: var(--ink);
+    }
+    .cta-block a {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      text-decoration: none;
+      font-size: .85rem;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: .45rem 1rem;
+      font-weight: 600;
+      transition: background .2s;
+    }
+    .cta-block a:hover { background: #a33508; }
+
+    /* ── CONCLUSION BOX ── */
+    .conclusion {
+      background: var(--ink);
+      color: var(--paper);
+      padding: 2rem 2rem 1.8rem;
+      margin-top: 3rem;
+      border-radius: 2px;
+    }
+    .conclusion h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--paper);
+      margin-bottom: 1rem;
+      padding-left: 0;
+    }
+    .conclusion h2::before { display: none; }
+    .conclusion p { color: #d9d0c2; margin-bottom: 1rem; }
+    .conclusion a {
+      display: inline-block;
+      border: 1px solid var(--accent);
+      color: var(--accent);
+      padding: .5rem 1.2rem;
+      font-size: .85rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      margin-top: .4rem;
+      transition: all .2s;
+    }
+    .conclusion a:hover { background: var(--accent); color: #fff; }
+
+    /* ── SIDEBAR ── */
+    aside { position: sticky; top: 2rem; }
+    .toc {
+      border: 1px solid var(--rule);
+      padding: 1.4rem 1.4rem 1.2rem;
+      background: #fff;
+    }
+    .toc h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: .6rem;
+    }
+    .toc ol {
+      padding-left: 1.2rem;
+      font-size: .88rem;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+    .toc ol li { margin-bottom: .4rem; }
+    .toc ol li a {
+      color: var(--mid);
+      text-decoration: none;
+      transition: color .15s;
+    }
+    .toc ol li a:hover { color: var(--accent); }
+
+    .sidebar-cta {
+      margin-top: 1.5rem;
+      background: var(--accent);
+      color: #fff;
+      padding: 1.4rem;
+      font-size: .88rem;
+    }
+    .sidebar-cta p { color: #fff; margin-bottom: .8rem; font-style: italic; line-height: 1.6; }
+    .sidebar-cta a {
+      display: block;
+      background: #fff;
+      color: var(--accent);
+      text-align: center;
+      font-weight: 700;
+      font-size: .82rem;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      padding: .5rem;
+      text-decoration: none;
+    }
+    .sidebar-cta a:hover { background: var(--accent-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 3px double var(--ink);
+      padding: 1.5rem 2rem;
+      text-align: center;
+      font-size: .82rem;
+      color: var(--mid);
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+
+    @media (max-width: 720px) {
+      .hero { grid-template-columns: 1fr; gap: 1rem; }
+      .article-wrap { grid-template-columns: 1fr; }
+      aside { position: static; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a href="https://cleartwo.co.uk/" class="logo">Clear<span>Two</span></a>
+  <nav>
+    <a href="https://cleartwo.co.uk/">Home</a>
+    <a href="https://cleartwo.co.uk/">SEO</a>
+    <a href="https://cleartwo.co.uk/">Web Design</a>
+    <a href="https://cleartwo.co.uk/">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="category-pill">Web Performance &amp; SEO</span>
+  <h1>7 Proven Ways to <em>Supercharge</em> Your Website Speed</h1>
+  <p class="hero-meta">
+    Published by <strong>ClearTwo Digital</strong> &nbsp;·&nbsp; 23 February 2026 &nbsp;·&nbsp; 6 min read
+  </p>
+</div>
+
+<div class="divider"><hr/></div>
+
+<!-- MAIN CONTENT -->
+<div class="article-wrap">
+
+  <article>
+    <p class="intro">A sluggish website frustrates visitors and drives them away before they even discover your content. Page speed is vital for engagement, retention, and search rankings — and with the right optimisation strategies, your site can feel lightning-fast.</p>
+
+    <!-- INTERNAL LINK 1 -->
+    <div class="cta-block">
+      <p>Need expert help making your website faster and more visible on Google? Our team at ClearTwo specialises in technical SEO and web performance.</p>
+      <a href="https://cleartwo.co.uk/" target="_blank" rel="noopener">View Our SEO Services →</a>
+    </div>
+
+    <h2 id="images">1. Optimise Image File Sizes</h2>
+    <p>High-quality images make a website visually appealing, but oversized files significantly slow loading times. Compressing images without losing clarity reduces the time it takes for pages to load. Formats like JPEG and PNG work well for photographs and graphics respectively, and modern formats like WebP offer even better compression.</p>
+    <p>Lazy loading is another powerful technique — images appear only when the user scrolls to them, saving bandwidth on initial page load. Proper image optimisation keeps a site visually stunning without compromising performance.</p>
+
+    <h2 id="caching">2. Enable Browser Caching</h2>
+    <p>Browser caching allows elements of your website to be stored on a visitor's device, so returning users don't have to download everything again. CSS, scripts, and images remain in memory for a set period, dramatically speeding up repeat visits and reducing server load.</p>
+    <p>Sites without caching feel sluggish when browsing multiple pages. Enabling caching is a subtle change that delivers lasting, meaningful results for every visitor — new or returning.</p>
+
+    <h2 id="minify">3. Minify CSS &amp; JavaScript</h2>
+    <p>Websites often contain extra spaces, line breaks, and unnecessary characters in CSS and JavaScript files. Removing this excess — called minification — notably reduces file size without affecting functionality. Pages load faster because less data travels from the server to the browser.</p>
+    <p>Minified code also reduces conflicts between scripts and improves responsiveness. Many tools automate this process seamlessly. It is a low-effort adjustment with an immediate, substantive impact on speed.</p>
+
+    <h2 id="server">4. Reduce Server Response Time</h2>
+    <p>The speed of your server directly affects how quickly content reaches users. Slow responses make even a well-optimised website feel sluggish. Using reliable hosting, optimised databases, and careful server configuration can reduce response times dramatically.</p>
+    <p>Even minor improvements in milliseconds improve overall page speed. Fast servers handle multiple visitors without lag, ensuring every request is answered efficiently — the foundation upon which all other optimisations rest.</p>
+
+    <!-- INTERNAL LINK 2 -->
+    <div class="cta-block">
+      <p>ClearTwo's web design team builds fast, lean websites engineered for performance from day one — no bloat, no slowdowns.</p>
+      <a href="https://cleartwo.co.uk/" target="_blank" rel="noopener">Explore Our Web Design Services →</a>
+    </div>
+
+    <h2 id="cdn">5. Use a Content Delivery Network (CDN)</h2>
+    <p>Geographical distance can slow load times if all visitors access a single server. A content delivery network (CDN) stores copies of your website on multiple servers worldwide, so visitors load data from the server closest to them — reducing travel time for every file.</p>
+    <p>CDNs also reduce strain on the primary server and prevent crashes during traffic spikes. By distributing content efficiently, a CDN makes every page appear faster and more reliable, regardless of where your visitor is located.</p>
+
+    <h2 id="plugins">6. Limit Heavy Plugins</h2>
+    <p>Plugins add functionality to websites, but every one introduces additional code that can slow pages down. Too many or poorly coded plugins cause conflicts and longer load times. Regularly reviewing and removing unnecessary plugins keeps your site light and agile.</p>
+    <p>Each plugin should justify its presence — if it isn't contributing significantly, it is better left out. Reducing plugin load improves speed, security, and overall user experience, helping pages load fast while retaining all essential functionality.</p>
+
+    <h2 id="code">7. Keep Your Website Code Clean</h2>
+    <p>Old scripts, unused styles, and commented-out sections accumulate over time, cluttering a website's codebase. Cleaning and auditing code regularly makes it easier for browsers to process pages efficiently. Structured, clean HTML and CSS improves loading speed and reduces errors.</p>
+    <p>Removing unnecessary elements also makes future maintenance easier and allows new features to be added without slowing the site. Websites with clean, optimised code feel faster and more professional to every visitor.</p>
+
+    <!-- CONCLUSION -->
+    <div class="conclusion">
+      <h2>Ready to Speed Up Your Website?</h2>
+      <p>Improving page speed is more than technical tweaks — it directly influences how visitors feel about and engage with your brand. By applying these seven techniques, your website becomes faster, more enjoyable, and more reliable. Quick-loading pages keep users engaged, boost credibility, and encourage return visits.</p>
+      <!-- INTERNAL LINK 3 -->
+      <a href="https://cleartwo.co.uk/" target="_blank" rel="noopener">Get a Free Website Audit from ClearTwo →</a>
+    </div>
+  </article>
+
+  <!-- SIDEBAR -->
+  <aside>
+    <div class="toc">
+      <h3>In This Article</h3>
+      <ol>
+        <li><a href="#images">Optimise Image File Sizes</a></li>
+        <li><a href="#caching">Enable Browser Caching</a></li>
+        <li><a href="#minify">Minify CSS &amp; JavaScript</a></li>
+        <li><a href="#server">Reduce Server Response Time</a></li>
+        <li><a href="#cdn">Use a CDN</a></li>
+        <li><a href="#plugins">Limit Heavy Plugins</a></li>
+        <li><a href="#code">Clean Website Code</a></li>
+      </ol>
+    </div>
+
+    <div class="sidebar-cta">
+      <p>"We help businesses grow online with expert SEO, web design, and digital strategy."</p>
+      <a href="https://cleartwo.co.uk/" target="_blank" rel="noopener">Visit ClearTwo.co.uk</a>
+    </div>
+  </aside>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 <a href="https://cleartwo.co.uk/" target="_blank" rel="noopener">ClearTwo Digital</a>. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
