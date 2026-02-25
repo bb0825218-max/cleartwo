@@ -1,0 +1,48 @@
+# robots.txt for ClearTwo Website
+# This file tells search engine crawlers which pages to crawl and which to avoid
+
+# Allow all crawlers to access the site
+User-agent: *
+Disallow: /
+
+# Allow specific main pages only
+Allow: /$
+Allow: /seo
+Allow: /web-design
+Allow: /contact
+Allow: /7-proven-ways-to-supercharge-your-website-speed
+
+# Block admin and sensitive areas
+Disallow: /admin/
+Disallow: /private/
+Disallow: /temp/
+Disallow: /*.pdf$
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+
+# Specific rules for Google
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+# Specific rules for Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+# Sitemap location
+Sitemap: https://bb0825218-max.github.io/cleartwo/sitemap.xml
+Sitemap: https://cleartwo.co.uk/sitemap.xml
+
+# Crawl delay (in seconds) - how long to wait between requests
+Request-rate: 30/60
